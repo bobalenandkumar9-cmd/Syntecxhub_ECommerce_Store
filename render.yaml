@@ -1,0 +1,16 @@
+# Render Blueprint: deploys the API. Deploy the client on Vercel/Netlify (see README).
+services:
+  - type: web
+    name: syntecxhub-store-api
+    runtime: node
+    rootDir: server
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: MONGO_URI
+        sync: false
+      - key: JWT_SECRET
+        generateValue: true
+      - key: CLIENT_URL
+        sync: false
